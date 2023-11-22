@@ -46,6 +46,7 @@ gcfs_dists_summary =  bgcs_dists_proc %>%
   summarize(dist_to_refseq = mean(membership_value))
 
 # Based on the initial BiG-FAM/BiG-SLICE papers, the GCF threshold in eucl. distances is of 900
+# See https://doi.org/10.1093/nar/gkaa812 
 gcfs_dists_summary %>% mutate(new = dist_to_refseq > 900) %>% pull(new) %>% table / nrow(gcfs_dists_summary)
 
 gcf_classes = bgcs_dists_proc %>%
