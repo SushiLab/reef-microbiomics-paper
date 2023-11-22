@@ -4,7 +4,7 @@
 
 library(tidyverse)
 
-# Resourecs -----
+# Resources -----
 
 source("https://raw.github.com/SushiLab/reef-microbiomics-paper/main/resources/color_palettes.R")
 
