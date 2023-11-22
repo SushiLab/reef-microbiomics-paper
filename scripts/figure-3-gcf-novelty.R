@@ -4,6 +4,10 @@
 
 library(tidyverse)
 
+# Resourecs -----
+
+source("https://raw.github.com/SushiLab/reef-microbiomics-paper/main/resources/color_palettes.R")
+
 # Load data -----
 
 rmd_bgcs = read_tsv("https://zenodo.org/records/10182967/files/RMD-biosynthetic-genes.tsv") %>% mutate(region_clustomatic = gsub("_", "-", region))
@@ -12,7 +16,7 @@ rmd_gcfs = read_tsv("https://zenodo.org/records/10182967/files/RMD-biosynthetic-
   mutate(dataset = ifelse(bgc %in% rmd_bgcs$region_clustomatic & grepl("^TARA", bgc), "RMD_internal", dataset)) %>%
   mutate(dataset = ifelse(bgc %in% rmd_bgcs$region_clustomatic & !grepl("^TARA", bgc), "RMD_external", dataset))
 antismash_results = read_tsv("https://zenodo.org/records/10182967/files/genomes-antismash-summary.tsv")
-antismash_category = readxl::read_xlsx("~/polybox/PhD/Exploratorium/TPAC_coral_mags/data/bgc_category.xlsx")
+antismash_category = read_tsv("https://raw.github.com/SushiLab/reef-microbiomics-paper/main/resources/bgc_category.tsv")
 antismash_category_dict = antismash_category$Summary
 aggregated_summary = read_tsv("https://zenodo.org/records/10182967/files/genomes-aggregated-summary.tsv")
 names(antismash_category_dict) = antismash_category$Antismash
