@@ -3,7 +3,6 @@
 # Libraries -----
 
 library(tidyverse)
-library(patchwork)
 
 # Resources -----
 
