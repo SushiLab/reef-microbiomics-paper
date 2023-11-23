@@ -10,6 +10,15 @@ bgc_colors = c(
   "Saccharides" = "#FAD753"
 )
 
+bgc_colors_fullname = c(
+  "Type I Polyketide Synthases"        = "#8EA0C7",
+  "RiPPs (Ribosomal Natural Products)" = "#EB8F6B",
+  "Terpenes"                           = "#82BFA6",
+  "Type II/III Polyketide Synthases"   = "#D790C1",
+  "Non-Ribosomal Peptide Synthetases"  = "#B5D465",
+  "Other"                              = "#FAD753"
+)
+
 tpac_colours<-c(
   "Tara Pacific"              = "#E9540D",
   "Tara Pacific pastel"       = "#f8ac87",
