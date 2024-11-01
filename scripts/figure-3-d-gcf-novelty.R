@@ -15,10 +15,10 @@ rmd_gcfs = read_tsv("https://zenodo.org/records/10182967/files/RMD-biosynthetic-
   mutate(dataset = ifelse(grepl("^MIBIG", bgc), "MIBIG", "OMD")) %>%
   mutate(dataset = ifelse(bgc %in% rmd_bgcs$region_clustomatic & grepl("^TARA", bgc), "RMD_internal", dataset)) %>%
   mutate(dataset = ifelse(bgc %in% rmd_bgcs$region_clustomatic & !grepl("^TARA", bgc), "RMD_external", dataset))
+aggregated_summary = read_tsv("https://zenodo.org/records/10182967/files/genomes-aggregated-summary.tsv")
 antismash_results = read_tsv("https://zenodo.org/records/10182967/files/genomes-antismash-summary.tsv")
 antismash_category = read_tsv("https://raw.github.com/SushiLab/reef-microbiomics-paper/main/resources/bgc_category.tsv")
 antismash_category_dict = antismash_category$Summary
-aggregated_summary = read_tsv("https://zenodo.org/records/10182967/files/genomes-aggregated-summary.tsv")
 names(antismash_category_dict) = antismash_category$Antismash
 bgcs_dists = read_tsv("https://zenodo.org/records/10182967/files/RMD-bigslice-gcf-distances.tsv")
 bgcs_ids = read_tsv("https://zenodo.org/records/10182967/files/RMD-bigslice-bgc-ids.tsv")
@@ -46,6 +46,7 @@ gcfs_dists_summary =  bgcs_dists_proc %>%
   summarize(dist_to_refseq = mean(membership_value))
 
 # Based on the initial BiG-FAM/BiG-SLICE papers, the GCF threshold in eucl. distances is of 900
+# See https://doi.org/10.1093/nar/gkaa812 
 gcfs_dists_summary %>% mutate(new = dist_to_refseq > 900) %>% pull(new) %>% table / nrow(gcfs_dists_summary)
 
 gcf_classes = bgcs_dists_proc %>%
