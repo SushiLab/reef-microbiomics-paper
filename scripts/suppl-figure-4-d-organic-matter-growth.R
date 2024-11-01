@@ -1,8 +1,5 @@
 # This script plots the growth curves for Sulfidibacter corallicola grown with coral-derived dissolved organic matter
 
-# Set directory
-setwd("C:/Users/wiederkf/Work Folders/Documents/Git_Projects/Reef_Microbiomics_DB/code")
-
 # Load packages
 require(data.table)
 require(tidyverse)
