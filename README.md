@@ -1,6 +1,6 @@
 # reef-microbiomics-paper
 
-Repository associated with the manuscript 'Genome-resolved diversity and biosynthetic potential of the reef microbiome' and the Reef Microbiomics Database.
+Repository associated with the manuscript 'Coral microbiomes as reservoirs of novel genomic and biosynthetic diversity' and the Reef Microbiomics Database.
 
 It contains the code to generate the analyses and figures reported in the manuscript based on the data available at [Zenodo](https://zenodo.org/doi/10.5281/zenodo.10182966).
 
