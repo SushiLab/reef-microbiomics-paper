@@ -16,9 +16,9 @@ source("https://raw.github.com/SushiLab/reef-microbiomics-paper/main/resources/c
 summary_genomes = fread("https://zenodo.org/records/10182967/files/genomes-aggregated-summary.tsv?download=1", header = TRUE, data.table = FALSE) %>%
   filter(!grepl("ISOG", data_type))
 
-metagenomes_tpac = openxlsx::read.xlsx("https://zenodo.org/records/10182966/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 1")
+metagenomes_tpac = openxlsx::read.xlsx("https://zenodo.org/records/17829964/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 1")
 
-metagenomes_ext = openxlsx::read.xlsx("https://zenodo.org/records/10182966/files/supplementary-table-2.xlsx?download=1", sheet = "Sheet 2") %>%
+metagenomes_ext = openxlsx::read.xlsx("https://zenodo.org/records/17829964/files/supplementary-table-2.xlsx?download=1", sheet = "Sheet 2") %>%
   filter(profiled == "Yes") %>%
   filter(!is.na(biome_group))
 

@@ -9,12 +9,12 @@ require(ggplot2)
 
 # Load data -----
 
-metagenomes_tpac = openxlsx::read.xlsx("https://zenodo.org/records/10182966/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 1")
+metagenomes_tpac = openxlsx::read.xlsx("https://zenodo.org/records/17829964/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 1")
 
-metagenomes_ext = openxlsx::read.xlsx("https://zenodo.org/records/10182966/files/supplementary-table-2.xlsx?download=1", sheet = "Sheet 2") %>%
+metagenomes_ext = openxlsx::read.xlsx("https://zenodo.org/records/17829964/files/supplementary-table-2.xlsx?download=1", sheet = "Sheet 2") %>%
   filter(profiled == "Yes")
 
-summary_genomes = fread("https://zenodo.org/records/10182967/files/genomes-aggregated-summary.tsv?download=1", header = TRUE, data.table = FALSE) %>%
+summary_genomes = fread("https://zenodo.org/records/17844029/files/genomes-aggregated-summary.tsv?download=1", header = TRUE, data.table = FALSE) %>%
   left_join(select(metagenomes_tpac, biosample, biome, biome_group), by = "biosample") %>%
   left_join(select(metagenomes_ext, biosample, biome, biome_group), by = "biosample") %>%
   mutate(biome = ifelse(!is.na(biome.x), biome.x, biome.y)) %>%

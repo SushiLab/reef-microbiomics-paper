@@ -10,21 +10,21 @@ require(stringr)
 
 # Load data ----
 
-gff_raw = readLines("R_input/Sperfeld_V5Y_2_polished.gff3") #S. corallicola feature annotations
+gff_raw = readLines("https://zenodo.org/records/17844029/files/RNAseq-feature-annotation.gff3?download=1") #S. corallicola feature annotations
 
-BGC = read.delim("R_input/Scoralli_summary_antiSMASH.txt", header = TRUE, sep = "\t", na.strings = c("", "NA"), stringsAsFactors = FALSE) %>% #antiSMASH results (BGCs) 
+BGC = read.delim("https://zenodo.org/records/17844029/files/RNAseq-antiSMASH.txt?download=1", header = TRUE, sep = "\t", na.strings = c("", "NA"), stringsAsFactors = FALSE) %>% #antiSMASH results (BGCs) 
   mutate(from_antiSMASH = as.integer(gsub(",", "", from_antiSMASH)), #remove commas and convert to integer
          to_antiSMASH = as.integer(gsub(",", "", to_antiSMASH)))
 
-meta = read.delim("R_input/meta.tsv", header = TRUE, sep = "\t", na.strings = c("", "NA"), stringsAsFactors = FALSE) %>% #filter metadata
+meta = read.delim("https://zenodo.org/records/17844029/files/RNAseq-meta.tsv?download=1", header = TRUE, sep = "\t", na.strings = c("", "NA"), stringsAsFactors = FALSE) %>% #filter metadata
   filter(condition %in% c("reference_stationary", "coralPOM_stationary"))
 
-counts = read.delim("R_input/21-08-24_htseqcounts_raw.csv", header = TRUE, sep = ",", na.strings = c("", "NA"), stringsAsFactors = FALSE) %>% #raw feature counts
+counts = read.delim("https://zenodo.org/records/17844029/files/RNAseq-htseqcounts.csv?download=1", header = TRUE, sep = ",", na.strings = c("", "NA"), stringsAsFactors = FALSE) %>% #raw feature counts
   select(any_of(c("gene_id", meta$sample_BMK)))
 
-core = read.delim("R_input/biosynth-core.list", header = FALSE, sep = "\t", na.strings = c("", "NA"), stringsAsFactors = FALSE)
+core = read.delim("https://zenodo.org/records/17844029/files/RNAseq-biosynth-core.list?download=1", header = FALSE, sep = "\t", na.strings = c("", "NA"), stringsAsFactors = FALSE)
 
-DGE = read.csv("R_input/2024-08-21_24MS01_coralPOM_stationary_vs_reference_stationary_l0a0.01_results.csv") %>% rename(ID = gene_id) #relevant DESeq2 differential gene expression analysis results
+DGE = read.csv("https://zenodo.org/records/17844029/files/RNAseq-diff-gene-expression.csv?download=1") %>% rename(ID = gene_id) #relevant DESeq2 differential gene expression analysis results
 
 # Clean feature annotations ----
 
@@ -149,7 +149,7 @@ ggplot(BGC_expression_long, aes(y = reorder(RegionTypeLabel, median_Log2FoldChan
         legend.position = "none")
 
 # Save the plot
-ggsave(filename = "R_output/BGC_transcription.png", plot = p, width = 8, height = 7)
+ggsave(filename = "BGC_transcription.png", plot = p, width = 8, height = 7)
 
 # Calculate mean gene feature counts per sample ----
 

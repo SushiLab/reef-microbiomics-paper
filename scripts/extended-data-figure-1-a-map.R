@@ -20,8 +20,8 @@ wrapper_save_html = function(html_widget, path, self = TRUE){
 
 # Load data -----
 
-tpac_metagenomes = openxlsx::read.xlsx("https://zenodo.org/records/10182966/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 1")
-ext_metagenomes = openxlsx::read.xlsx("https://zenodo.org/records/10182966/files/supplementary-table-2.xlsx?download=1", sheet = "Sheet 2")
+tpac_metagenomes = openxlsx::read.xlsx("https://zenodo.org/records/17829964/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 1")
+ext_metagenomes = openxlsx::read.xlsx("https://zenodo.org/records/17829964/files/supplementary-table-2.xlsx?download=1", sheet = "Sheet 2")
 metadat_tpac = fread("https://zenodo.org/record/6299409/files/TARA-PACIFIC_samples-provenance_20220131d.tsv?download=1", header = TRUE, data.table = FALSE, skip = 1)
 
 # Modify map data ----

@@ -8,11 +8,11 @@ require(ggforce)
 
 # Load data ----
 
-metadat = fread("https://zenodo.org/records/10182966/files/organic-matter-growth_metadata.csv?download=1", header = TRUE, data.table = FALSE) %>%
+metadat = fread("https://zenodo.org/records/17844029/files/organic-matter-growth-metadata.csv?download=1", header = TRUE, data.table = FALSE) %>%
   filter(!timepoint == "t8") %>% #abort rate high
   filter(!organic_matter == "DOM") #not used in paper (coral-exuded dissolved organic matter)
 
-flowdat = fread("https://zenodo.org/records/10182966/files/organic-matter-growth_cell-counts.csv?download=1", header = TRUE, data.table = FALSE) %>%
+flowdat = fread("https://zenodo.org/records/17844029/files/organic-matter-growth-cell-counts.csv?download=1", header = TRUE, data.table = FALSE) %>%
   filter(id %in% metadat$id)
   
 # Append metadata to flow cytometry data ----

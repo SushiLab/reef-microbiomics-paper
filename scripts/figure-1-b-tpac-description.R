@@ -10,10 +10,10 @@ require(ComplexHeatmap)
 require(grDevices)
 
 # Load data -----
-metagenomes_tpac_coral = openxlsx::read.xlsx("https://zenodo.org/records/10182966/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 1") %>%
+metagenomes_tpac_coral = openxlsx::read.xlsx("https://zenodo.org/records/17829964/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 1") %>%
   mutate(biome_group = word(type, 2))
 
-metagenomes_tpac_water = openxlsx::read.xlsx("https://zenodo.org/records/10182966/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 2")
+metagenomes_tpac_water = openxlsx::read.xlsx("https://zenodo.org/records/17829964/files/supplementary-table-1.xlsx?download=1", sheet = "Sheet 2")
 
 metadat_tpac = fread("https://zenodo.org/record/6299409/files/TARA-PACIFIC_samples-provenance_20220131d.tsv?download=1", header = TRUE, data.table = FALSE, skip = 1) %>%
   rename(biosample = `sample-id_biosamples`)
